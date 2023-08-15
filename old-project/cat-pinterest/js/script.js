@@ -1,7 +1,9 @@
-import getCatsImage from './modules/services.js';
-import anim from './modules/anim.js';
+import getCatsImage from './modules/services';
+import partitionSwitching from './modules/partition-switching';
+import anim from './modules/anim';
 
 document.addEventListener('DOMContentLoaded', () => {
   getCatsImage();
+  partitionSwitching();
   anim();
 });
