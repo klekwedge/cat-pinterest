@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { Button, Card, Flex, Image } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import getData from '../../services/CatAPI';
 import ICat from '../../types';
@@ -9,7 +10,7 @@ function MainPage() {
   const [favouriteCats, setFavouriteCats] = useState<ICat[]>([]);
 
   const addToFavourite = (cat: ICat) => {
-    if(!favouriteCats.find(favouriteCat => favouriteCat.id === cat.id)){
+    if (!favouriteCats.find((favouriteCat) => favouriteCat.id === cat.id)) {
       setFavouriteCats([...favouriteCats, cat]);
     }
   };
@@ -55,15 +56,19 @@ function MainPage() {
       <main className="page">
         <section className="page__cats cats">
           <div className="cats__container _container">
-            <ul className="cats__list">
+            <Flex align="center" justify="center" wrap="wrap" gap="20px">
               {cats.map((cat) => (
-                <li className="cats__item" key={cat.id} onClick={() => addToFavourite(cat)}>
-                  <img src={cat.url} className="cats__image" alt="cat" />
-                  <img className="cats__like" src="/public/png/hollow-heart.png" alt="like icon" />
-                </li>
+                <Card className='cats__item' key={cat.id} shadow="sm" padding="10px" radius="md" withBorder onClick={() => addToFavourite(cat)}>
+                  <Card.Section>
+                    <Image src={cat.url} alt="cat" width="100%" height="160px" fit='cover' />
+                  </Card.Section>
+                  <Button display='block' ml='auto' variant="light" color="blue" mt="md" radius="md">
+                    Like
+                  </Button>
+                </Card>
               ))}
-            </ul>
-            <ul className="cats__list_favourite" />
+            </Flex>
+            {/* <ul className="cats__list_favourite" /> */}
           </div>
         </section>
       </main>
