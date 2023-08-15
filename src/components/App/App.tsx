@@ -5,6 +5,13 @@ import ICat from '../../types';
 function App() {
   const [cats, setCats] = useState<ICat[]>([]);
   const [page, setPage] = useState(1);
+  const [favouriteCats, setFavouriteCats] = useState<ICat[]>([]);
+
+  const addToFavourite = (cat: ICat) => {
+    if(!favouriteCats.find(favouriteCat => favouriteCat.id === cat.id)){
+      setFavouriteCats([...favouriteCats, cat]);
+    }
+  };
 
   const showModalByScroll = () => {
     if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
@@ -12,8 +19,6 @@ function App() {
       setPage((value) => value + 1);
     }
   };
-
-  console.log(cats);
 
   useEffect(() => {
     getData(page).then((data) => setCats([...cats, ...data]));
@@ -52,7 +57,7 @@ function App() {
           <div className="cats__container _container">
             <ul className="cats__list">
               {cats.map((cat) => (
-                <li className="cats__item" key={cat.id}>
+                <li className="cats__item" key={cat.id} onClick={() => addToFavourite(cat)}>
                   <img src={cat.url} className="cats__image" alt="cat" />
                   <img className="cats__like" src="/public/png/hollow-heart.png" alt="like icon" />
                 </li>
