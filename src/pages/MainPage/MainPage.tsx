@@ -1,13 +1,15 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { Button, Card, Flex, Image } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import getData from '../../services/CatAPI';
 import ICat from '../../types';
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
+import { fetchCats } from '../../slices/catsSlice/catsSlice';
 
 function MainPage() {
-  const [cats, setCats] = useState<ICat[]>([]);
+  const dispatch = useAppDispatch();
+
+  const { cats } = useAppSelector((state) => state.cats);
   const [page, setPage] = useState(1);
-  const [favouriteCats, setFavouriteCats] = useState<ICat[]>([]);
 
   const addToFavourite = (cat: ICat) => {
     if (!favouriteCats.find((favouriteCat) => favouriteCat.id === cat.id)) {
@@ -22,7 +24,7 @@ function MainPage() {
   };
 
   useEffect(() => {
-    getData(page).then((data) => setCats([...cats, ...data]));
+    dispatch(fetchCats(page));
   }, [page]);
 
   useEffect(() => {
