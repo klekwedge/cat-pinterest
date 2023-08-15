@@ -44,9 +44,7 @@ function partitionSwitching() {
                 }
               });
 
-              console.log(favouriteCatsArr);
               favouriteCatsArr = favouriteCatsArr.filter((cat) => cat.id !== favouriteCat.id);
-              console.log(favouriteCatsArr);
 
               localStorage.setItem('favouriteCats', JSON.stringify(favouriteCatsArr));
               catsListFavourite.removeChild(catItem);
