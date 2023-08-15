@@ -179,7 +179,7 @@ input {
 /*-------------------------------------------------------------*/
 /*-----Cats----------------------------------------------------*/
 /*-------------------------------------------------------------*/
-.cats__list {
+.cats__list, .cats__list_favourite {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -192,6 +192,10 @@ input {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 40px 40px;
+}
+
+.cats__list_favourite {
+  display: none;
 }
 
 .cats__item {

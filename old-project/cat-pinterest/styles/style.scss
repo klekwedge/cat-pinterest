@@ -89,7 +89,8 @@ input {
 /*-------------------------------------------------------------*/
 
 .cats {
-  &__list {
+  &__list,
+  &__list_favourite {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,6 +98,10 @@ input {
     gap: 40px 40px;
   }
 
+  &__list_favourite {
+    display: none;
+  }
+  
   &__item {
     display: flex;
     justify-content: center;
@@ -133,7 +138,7 @@ input {
       cursor: pointer;
       transition: all 0.5s;
       &:hover {
-        transform: scale(1.1);      
+        transform: scale(1.1);
       }
 
       // &:active {
