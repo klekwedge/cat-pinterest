@@ -1,30 +1,32 @@
 function FavouritePage() {
   return (
-    <div>
-      <header className="header">
-        <div className="header__container _container">
-          <nav className="header__menu menu">
-            <ul className="menu__list">
-              <li className="menu__item">
-                <button type="button" className="menu__button _active">
-                  Все котики
-                </button>
-              </li>
-              <li className="menu__item">
-                <button type="button" className="menu__button" data-favourite>
-                  Любимые котики
-                </button>
-              </li>
-            </ul>
-          </nav>
+    <main className="page">
+      <section className="page__cats cats">
+        <div className="cats__container _container">
+          {/* <Flex align="center" justify="center" wrap="wrap" gap="20px">
+            {cats.map((cat) => (
+              <Card
+                className="cats__item"
+                key={cat.id}
+                shadow="sm"
+                padding="10px"
+                radius="md"
+                withBorder
+                onClick={() => addToFavourite(cat)}
+              >
+                <Card.Section>
+                  <Image src={cat.url} alt="cat" width="100%" height="160px" fit="cover" />
+                </Card.Section>
+                <Button display="block" ml="auto" variant="light" color="blue" mt="md" radius="md">
+                  Like
+                </Button>
+              </Card>
+            ))}
+          </Flex> */}
+          {/* <ul className="cats__list_favourite" /> */}
         </div>
-      </header>
-      <main className="page">
-        <section className="page__cats cats">
-          <div className="cats__container _container"/>
-        </section>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
 
