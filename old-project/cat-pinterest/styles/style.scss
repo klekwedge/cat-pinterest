@@ -56,3 +56,30 @@ input {
 /*-------------------------------------------------------------*/
 /*-----Header--------------------------------------------------*/
 /*-------------------------------------------------------------*/
+
+.header {
+  background: #2196f3;
+  width: 100%;
+  margin-bottom: 36px;
+}
+
+.menu {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__button {
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: 0.25px;
+    padding: 25px;
+    color: #ffffff;
+    background: transparent;
+  }
+
+  &__button._active {
+    background: #1e88e5;
+  }
+}

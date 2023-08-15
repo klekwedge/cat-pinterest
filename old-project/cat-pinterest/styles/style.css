@@ -148,3 +148,30 @@ input {
 /*-------------------------------------------------------------*/
 /*-----Header--------------------------------------------------*/
 /*-------------------------------------------------------------*/
+.header {
+  background: #2196f3;
+  width: 100%;
+  margin-bottom: 36px;
+}
+
+.menu__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.menu__button {
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  letter-spacing: 0.25px;
+  padding: 25px;
+  color: #ffffff;
+  background: transparent;
+}
+
+.menu__button._active {
+  background: #1e88e5;
+}
