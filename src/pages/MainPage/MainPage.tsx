@@ -57,7 +57,6 @@ function MainPage() {
               </Card>
             ))}
           </Flex>
-          {/* <ul className="cats__list_favourite" /> */}
         </div>
       </section>
     </main>
