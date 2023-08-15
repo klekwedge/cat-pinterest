@@ -34,7 +34,14 @@ function App() {
       <main className="page">
         <section className="page__cats cats">
           <div className="cats__container _container">
-            <ul className="cats__list"></ul>
+            <ul className="cats__list">
+              {cats.map((cat) => (
+                <li className="cats__item" key={cat.id}>
+                  <img src={cat.url} className="cats__image" alt="cat" />
+                  <img className='cats__like' src="/public/png/hollow-heart.png" alt="like icon" />
+                </li>
+              ))}
+            </ul>
             <ul className="cats__list_favourite" />
           </div>
         </section>
