@@ -1,4 +1,16 @@
+import { useEffect, useState } from 'react';
+import { getData } from '../../services/CatAPI';
+import ICat from '../../types';
+
 function App() {
+  const [cats, setCats] = useState<ICat[]>([]);
+
+  useEffect(() => {
+    getData().then((data) => setCats(data));
+  }, []);
+
+  console.log(cats);
+
   return (
     <div>
       <header className="header">
@@ -22,8 +34,7 @@ function App() {
       <main className="page">
         <section className="page__cats cats">
           <div className="cats__container _container">
-            <div className="testOPA" />
-            <ul className="cats__list" />
+            <ul className="cats__list"></ul>
             <ul className="cats__list_favourite" />
           </div>
         </section>
