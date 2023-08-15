@@ -116,7 +116,6 @@ input {
   &__image {
     width: 200px;
     height: 200px;
-    // object-fit: cover;
   }
 
   &__like {
@@ -132,7 +131,7 @@ input {
     transition: all 0.2s;
 
     &:active {
-      transform: scale(0.9);
+      transform: scale(0.7);
     }
   }
 }
