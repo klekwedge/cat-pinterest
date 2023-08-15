@@ -1,10 +1,17 @@
 function getCatsImage() {
-  let favouriteCatsArr = [];
+  let favouriteCatsArr;
+  if (JSON.parse(localStorage.getItem('favouriteCats'))) {
+    favouriteCatsArr = JSON.parse(localStorage.getItem('favouriteCats'));
+  } else {
+    favouriteCatsArr = [];
+  }
+
   function createCatImage(newCat) {
     const catList = document.querySelector('.cats__list');
 
     const catItem = document.createElement('li');
     catItem.classList.add('cats__item');
+    catItem.setAttribute('id', newCat.id);
 
     const catImage = document.createElement('img');
     catImage.classList.add('cats__image');
