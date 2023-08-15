@@ -33,6 +33,16 @@ function getCatsImage() {
   }
 
   getData();
+
+  function showModalByScroll() {
+    if (
+      window.pageYOffset + document.documentElement.clientHeight
+      >= document.documentElement.scrollHeight
+    ) {
+      getData();
+    }
+  }
+  window.addEventListener('scroll', showModalByScroll);
 }
 
 export default getCatsImage;
