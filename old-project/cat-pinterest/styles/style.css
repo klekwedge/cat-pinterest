@@ -210,6 +210,8 @@ input {
           align-items: center;
   position: relative;
   padding: 15px;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 .cats__item:hover {
@@ -250,32 +252,7 @@ input {
           transform: scale(1.1);
 }
 
-@-webkit-keyframes like {
-  0% {
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
-  }
-  90% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-}
-
-@keyframes like {
-  0% {
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
-  }
-  90% {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
+.cats__like svg:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
 }
