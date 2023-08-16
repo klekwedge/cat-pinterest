@@ -18,11 +18,11 @@ const catsSlice = createSlice({
   name: 'cats',
   initialState,
   reducers: {
-    setFavouriteCats: (state, action) => {
-      state.cats = action.payload;
-    },
     addCatToFavourite: (state, action) => {
-      state.cats.push(action.payload);
+      state.favouriteCats.push(action.payload);
+    },
+    removeCatFromFavourite: (state, action) => {
+      state.favouriteCats = state.favouriteCats.filter(cat => cat.id !== action.payload.id);
     },
   },
   extraReducers: (builder) => {
@@ -42,5 +42,5 @@ const catsSlice = createSlice({
 
 
 const { actions, reducer } = catsSlice;
-export const { setFavouriteCats, addCatToFavourite } = actions;
+export const { addCatToFavourite, removeCatFromFavourite } = actions;
 export default reducer;

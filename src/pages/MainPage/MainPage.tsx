@@ -3,17 +3,17 @@ import { Button, Card, Flex, Image } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import ICat from '../../types';
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
-import { fetchCats } from '../../slices/catsSlice/catsSlice';
+import { addCatToFavourite, fetchCats } from '../../slices/catsSlice/catsSlice';
 
 function MainPage() {
   const dispatch = useAppDispatch();
 
-  const { cats } = useAppSelector((state) => state.cats);
+  const { cats, favouriteCats } = useAppSelector((state) => state.cats);
   const [page, setPage] = useState(1);
 
   const addToFavourite = (cat: ICat) => {
     if (!favouriteCats.find((favouriteCat) => favouriteCat.id === cat.id)) {
-      setFavouriteCats([...favouriteCats, cat]);
+      dispatch(addCatToFavourite(cat));
     }
   };
 
@@ -41,19 +41,19 @@ function MainPage() {
         <div className="cats__container _container">
           <Flex align="center" justify="center" wrap="wrap" gap="20px">
             {cats.map((cat) => (
-              <Card
-                className="cats__item"
-                key={cat.id}
-                shadow="sm"
-                padding="10px"
-                radius="md"
-                withBorder
-                onClick={() => addToFavourite(cat)}
-              >
+              <Card className="cats__item" key={cat.id} shadow="sm" padding="10px" radius="md" withBorder>
                 <Card.Section>
                   <Image src={cat.url} alt="cat" width="100%" height="160px" fit="cover" />
                 </Card.Section>
-                <Button display="block" ml="auto" variant="light" color="blue" mt="md" radius="md">
+                <Button
+                  display="block"
+                  ml="auto"
+                  variant="light"
+                  color="blue"
+                  mt="md"
+                  radius="md"
+                  onClick={() => addToFavourite(cat)}
+                >
                   Like
                 </Button>
               </Card>
