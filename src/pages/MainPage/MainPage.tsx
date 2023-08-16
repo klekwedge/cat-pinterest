@@ -32,12 +32,15 @@ function MainPage() {
     }
   };
 
+  console.log(localStorage.getItem('savedFavourite'));
+
   useEffect(() => {
     window.addEventListener('scroll', showModalByScroll);
 
-    const savedFavourite = JSON.parse(localStorage.getItem('savedFavourite') || '');
+    const savedFavourite = localStorage.getItem('savedFavourite');
+    console.log(savedFavourite);
     if (savedFavourite) {
-      dispatch(setFavouriteCats(savedFavourite));
+      dispatch(setFavouriteCats(JSON.parse(savedFavourite)));
     }
 
     return () => {
