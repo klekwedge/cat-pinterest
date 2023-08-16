@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { CatsState } from './catsSlice.types';
-import useHttp from '../../hooks/useHTTP';
+import useFetch from '../../hooks/useFetch';
 
 const initialState: CatsState = {
   cats: [],
@@ -10,7 +10,7 @@ const initialState: CatsState = {
 };
 
 export const fetchCats = createAsyncThunk('cats/fetchCats', (page: number) => {
-    const { request } = useHttp();
+    const { request } = useFetch();
     return request(`https://api.thecatapi.com/v1/images/search?limit=10&page=${page}&size=thumb`);
 });
 
