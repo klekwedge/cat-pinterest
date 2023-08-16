@@ -3,7 +3,7 @@ import { Button, Card, Flex, Image } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import ICat from '../../types';
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
-import { addCatToFavourite, fetchCats } from '../../slices/catsSlice/catsSlice';
+import { addCatToFavourite, fetchCats, removeCatFromFavourite } from '../../slices/catsSlice/catsSlice';
 
 function MainPage() {
   const dispatch = useAppDispatch();
@@ -15,6 +15,10 @@ function MainPage() {
     if (!favouriteCats.find((favouriteCat) => favouriteCat.id === cat.id)) {
       dispatch(addCatToFavourite(cat));
     }
+  };
+
+  const removeFromFavourite = (cat: ICat) => {
+    dispatch(removeCatFromFavourite(cat));
   };
 
   const showModalByScroll = () => {
@@ -45,17 +49,31 @@ function MainPage() {
                 <Card.Section>
                   <Image src={cat.url} alt="cat" width="100%" height="160px" fit="cover" />
                 </Card.Section>
-                <Button
-                  display="block"
-                  ml="auto"
-                  variant="light"
-                  color="blue"
-                  mt="md"
-                  radius="md"
-                  onClick={() => addToFavourite(cat)}
-                >
-                  Like
-                </Button>
+                {favouriteCats.includes(cat) ? (
+                  <Button
+                    display="block"
+                    mr="auto"
+                    variant="light"
+                    color="blue"
+                    mt="md"
+                    radius="md"
+                    onClick={() => removeFromFavourite(cat)}
+                  >
+                    UnLike
+                  </Button>
+                ) : (
+                  <Button
+                    display="block"
+                    ml="auto"
+                    variant="light"
+                    color="blue"
+                    mt="md"
+                    radius="md"
+                    onClick={() => addToFavourite(cat)}
+                  >
+                    Like
+                  </Button>
+                )}
               </Card>
             ))}
           </Flex>
