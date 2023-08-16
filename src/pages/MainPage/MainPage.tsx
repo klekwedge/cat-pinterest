@@ -32,13 +32,11 @@ function MainPage() {
     }
   };
 
-  console.log(localStorage.getItem('savedFavourite'));
 
   useEffect(() => {
     window.addEventListener('scroll', showModalByScroll);
 
     const savedFavourite = localStorage.getItem('savedFavourite');
-    console.log(savedFavourite);
     if (savedFavourite) {
       dispatch(setFavouriteCats(JSON.parse(savedFavourite)));
     }
@@ -59,7 +57,6 @@ function MainPage() {
   return (
     <main className="page">
       <section className="page__cats cats">
-        <div className="cats__container _container">
           <Flex align="center" justify="center" wrap="wrap" gap="20px">
             {cats.map((cat) => (
               <Card className="cats__item" key={cat.id} shadow="sm" padding="10px" radius="md" withBorder>
@@ -94,7 +91,6 @@ function MainPage() {
               </Card>
             ))}
           </Flex>
-        </div>
       </section>
     </main>
   );
