@@ -52,7 +52,7 @@ The design is here - https://bit.ly/3utxaL2
 - TypeScript
 - Redux Toolkit
 - SCSS
-- Chakra UI
+- Mantine
 
 ### What I learned
 

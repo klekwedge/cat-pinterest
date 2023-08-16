@@ -52,7 +52,7 @@
 - TypeScript
 - Redux Toolkit
 - SCSS
-- Chakra UI
+- Mantine
 
 ### Что я узнал
 

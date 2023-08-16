@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from '../Header/Header';
 import { Container, Loader } from '@mantine/core';
+import Header from '../Header/Header';
 
 const MainPage = lazy(() => import('../../pages/MainPage/MainPage'));
 const FavouritePage = lazy(() => import('../../pages/FavouritePage/FavouritePage'));
