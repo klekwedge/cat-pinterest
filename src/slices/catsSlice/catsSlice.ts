@@ -18,6 +18,9 @@ const catsSlice = createSlice({
   name: 'cats',
   initialState,
   reducers: {
+    setFavouriteCats: (state, action) => {
+      state.favouriteCats = action.payload;
+    },
     addCatToFavourite: (state, action) => {
       state.favouriteCats.push(action.payload);
     },
@@ -42,5 +45,5 @@ const catsSlice = createSlice({
 
 
 const { actions, reducer } = catsSlice;
-export const { addCatToFavourite, removeCatFromFavourite } = actions;
+export const { setFavouriteCats, addCatToFavourite, removeCatFromFavourite } = actions;
 export default reducer;

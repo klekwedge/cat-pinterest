@@ -3,7 +3,12 @@ import { Button, Card, Flex, Image } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import ICat from '../../types';
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux';
-import { addCatToFavourite, fetchCats, removeCatFromFavourite } from '../../slices/catsSlice/catsSlice';
+import {
+  addCatToFavourite,
+  fetchCats,
+  removeCatFromFavourite,
+  setFavouriteCats,
+} from '../../slices/catsSlice/catsSlice';
 
 function MainPage() {
   const dispatch = useAppDispatch();
@@ -28,16 +33,25 @@ function MainPage() {
   };
 
   useEffect(() => {
-    dispatch(fetchCats(page));
-  }, [page]);
-
-  useEffect(() => {
     window.addEventListener('scroll', showModalByScroll);
+
+    const savedFavourite = JSON.parse(localStorage.getItem('savedFavourite') || '');
+    if (savedFavourite) {
+      dispatch(setFavouriteCats(savedFavourite));
+    }
 
     return () => {
       window.removeEventListener('scroll', showModalByScroll);
     };
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('savedFavourite', JSON.stringify(favouriteCats));
+  }, [favouriteCats]);
+
+  useEffect(() => {
+    dispatch(fetchCats(page));
+  }, [page]);
 
   return (
     <main className="page">
