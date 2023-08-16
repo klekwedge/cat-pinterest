@@ -5,6 +5,7 @@ import { Container, Loader } from '@mantine/core';
 
 const MainPage = lazy(() => import('../../pages/MainPage/MainPage'));
 const FavouritePage = lazy(() => import('../../pages/FavouritePage/FavouritePage'));
+const ErrorPage = lazy(() => import('../../pages/ErrorPage/ErrorPage'));
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/favourite" element={<FavouritePage />} />
-            <Route path="*" element={<h1>404</h1>} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </Suspense>
       </Container>
